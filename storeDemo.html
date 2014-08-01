@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0 }
+		#TV_screen {
+			width: 1080px;
+			height: 720px;
+			position: relative;
+			background-color: gray;
+			border: 1px solid;
+		}
+		.parallelogramRight{
+			position:relative;
+			width:150px; 
+			height:100px; 
+			border:1px solid #000; 
+			transform: rotate(-30deg) skew(-30deg); 
+			-webkit-transform: rotate(-30deg) skew(-30deg);
+		}	
+
+		/* http://css-tricks.com/examples/ShapesOfCSS/ */
+		#diamond_container {
+			margin: 20px;
+		}
+		
+		/* http://jsfiddle.net/Matt_Coughlin/QFUKU/4/ */
+		#trapezoid {
+			border-bottom: 150px solid black;
+			/* border-left: 50px solid transparent; */
+			border-right: 90px solid transparent;
+			height: 0;
+			width: 80px;
+			transform: rotate(90deg); 
+			-webkit-transform: rotate(90deg);
+			margin-bottom:0px; /* For Safari 5.1 to 6.0 */
+
+
+
+
+			background: -webkit-linear-gradient(left top, red , blue); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, red, blue); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, red, blue); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, red , blue); /* Standard syntax (must be last) */
+
+		}
+
+		#diamond_1 {
+			background:#D0C915;
+		}
+		#diamond_2 {
+			background:#00BCE9;
+		}
+		#diamond_3 {
+			background:#D93A4C;
+		}
+		#diamond_4 {
+			background:#F38E1A;
+		}
+
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    </script>
+    <script type="text/javascript">
+	$(document).ready(function() {
+
+	});
+    </script>
+  </head>
+  <body>
+  	<div id='TV_screen'>
+  		<div id='trapezoid'></div>
+	  	<div id='diamond_container'>
+	  		
+		    <div id="diamond_1" class='parallelogramRight'></div>
+		    <div id="diamond_2" class='parallelogramRight'></div>
+		    <div id="diamond_3" class='parallelogramRight'></div>
+		    <div id="diamond_4" class='parallelogramRight'></div>
+	    </div>
+	</div>
+  </body>
+</html>
