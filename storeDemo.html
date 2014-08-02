@@ -6,46 +6,36 @@
 		html { height: 100% }
 		body { height: 100%; margin: 0; padding: 0 }
 		#TV_screen {
-			width: 1080px;
-			height: 720px;
+			/* width: 1920px;
+			height: 1080px; */
+			width: 1920px;
+			height: 1080px;
 			position: relative;
 			background-color: gray;
-			border: 1px solid;
+			background-image: url('./1920_1080_2.jpg');
 		}
-		.parallelogramRight{
-			position:relative;
-			width:150px; 
-			height:100px; 
-			border:1px solid #000; 
-			transform: rotate(-30deg) skew(-30deg); 
-			-webkit-transform: rotate(-30deg) skew(-30deg);
-		}	
 
 		/* http://css-tricks.com/examples/ShapesOfCSS/ */
 		#diamond_container {
-			margin: 20px;
-		}
-		
-		/* http://jsfiddle.net/Matt_Coughlin/QFUKU/4/ */
-		#trapezoid {
-			border-bottom: 150px solid black;
-			/* border-left: 50px solid transparent; */
-			border-right: 90px solid transparent;
-			height: 0;
-			width: 80px;
-			transform: rotate(90deg); 
-			-webkit-transform: rotate(90deg);
-			margin-bottom:0px; /* For Safari 5.1 to 6.0 */
+			position:relative;
+			margin-left: 3px;
+			top: -115px;
+		}	
 
-
-
-
-			background: -webkit-linear-gradient(left top, red , blue); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, red, blue); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, red, blue); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, red , blue); /* Standard syntax (must be last) */
-
-		}
+		.parallelogramRight{
+			position:relative;
+			width:150px; 
+			height:130px; 
+			border:1px solid #000;
+			left: -160px;
+			/* -webkit-transform: rotate(-25deg) skew(-25deg);
+			transform: rotate(-25deg) skew(-25deg);  */
+			/* transition: transform .2s ease-in-out; */
+			/*-webkit-transform-style: preserve-3d;*/
+			/* -webkit-animation: left_to_right_animation 1s forwards ease-in-out; */
+			/* -webkit-transition: all 1s ease-out;
+			transition: all 1s ease-out; */
+		}	
 
 		#diamond_1 {
 			background:#D0C915;
@@ -59,25 +49,113 @@
 		#diamond_4 {
 			background:#F38E1A;
 		}
+		
+		#trapezoid_container {
+		    left: 0px;
+		    top: 0px;
+		    width: 180px;
+		    height: 290px;
+		    position: relative;
+		    overflow: hidden;
+		    color:white;
+		    z-index: 50;
+		}
+	
+		#inner {
+		    width: 180px;
+		    height: 290px;
+		    top: -150px;
+		    position: relative;
+		    background-image: -webkit-linear-gradient(left, #191719 1%, #4E4C4E);
+		    -webkit-transform: skew(0deg, -25deg); 
+		}
+
+		#inner > p {
+			position: relative;
+			-webkit-transform: skew(0deg, 25deg);
+			top:150px;
+		    -webkit-transform: skew(0deg, 25deg);
+		   padding-top: 25px;
+		   font-weight: bold;
+		   font-size: 23px;
+		   text-align: center; 
+		}
+
+		#stick_left {
+			position: absolute;
+			width: 13px;
+			height:560px;
+			top: -199px;
+			background-image: -webkit-linear-gradient(top, #201E20 4%, #919092);
+			z-index: 50;
+		}
+
+		#stick_bottom {
+			position: relative;
+			width:80px; 
+			height:25px; 
+			top: 29px;
+			left: -8px;
+			background-image: -webkit-linear-gradient(left, #919092 1%, #201E20);
+			border:none;
+			z-index: 50;
+			-webkit-transform: rotate(-25deg) skew(-25deg);
+			transform: rotate(-25deg) skew(-25deg);
+		}
+		
+		.left_to_right {
+			-webkit-transform-style: preserve-3d;
+			-webkit-animation: left_to_right_animation 0.2s forwards cubic-bezier(0, 0, .58, 1);
+		}
+
+		@-webkit-keyframes left_to_right_animation {			
+			0% { -webkit-transform: translate3d(0px,0px,0px) rotate(-25deg) skew(-25deg);opacity: 1 }
+			97% { -webkit-transform: translate3d(163px,0px,0px) rotate(-25deg) skew(-25deg);opacity: 1 }	
+			100% { -webkit-transform: translate3d(160px,0px,0px) rotate(-25deg) skew(-25deg);opacity: 1 }
+		}
+
+		.top_to_down {
+			-webkit-transform-style: preserve-3d;
+			-webkit-animation: top_to_down_animation 0.6s forwards cubic-bezier(0, 0, .58, 1);
+		}
+
+		@-webkit-keyframes top_to_down_animation {			
+			0% { -webkit-transform: translate3d(0px,0px,0px);opacity: 1 }	
+			100% { -webkit-transform: translate3d(0px,395px,0px);opacity: 1 }
+		}
+	}
 
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     </script>
     <script type="text/javascript">
 	$(document).ready(function() {
-
+		showDiamond();
 	});
+
+	function showDiamond() {
+		$("#stick_left").addClass("top_to_down");
+		$("#diamond_1").addClass("left_to_right");
+		setInterval(function() {$("#diamond_2").addClass("left_to_right");}, 150);
+		setInterval(function() {$("#diamond_3").addClass("left_to_right");}, 350);
+		setInterval(function() {$("#diamond_4").addClass("left_to_right");}, 450);
+		setInterval(function() {$("#stick_bottom").css("display", "block")}, 550);
+	}
     </script>
   </head>
   <body>
   	<div id='TV_screen'>
-  		<div id='trapezoid'></div>
-	  	<div id='diamond_container'>
-	  		
+  		<div id="trapezoid_container">
+			<div id="inner"><p>ULTRA HDTV<br>65UF75</p></div>
+		</div>
+		<div id="stick_left"></div>
+		
+	  	<div id='diamond_container' >
 		    <div id="diamond_1" class='parallelogramRight'></div>
 		    <div id="diamond_2" class='parallelogramRight'></div>
 		    <div id="diamond_3" class='parallelogramRight'></div>
 		    <div id="diamond_4" class='parallelogramRight'></div>
+		    <div id="stick_bottom" style='display:none;'></div>
 	    </div>
 	</div>
   </body>
